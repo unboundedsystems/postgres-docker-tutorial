@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  pgadmin:
+    # For more details on configuring the pgadmin4 Docker image, see:
+    #   https://hub.docker.com/r/dpage/pgadmin4/
+    image: dpage/pgadmin4
+
+    # Expose the web UI on localhost port 8080
+    ports:
+      - '8080:80'
+    network_mode: bridge
+
+    # Link this container to the postgres container with hostname 'postgres'
+    external_links:
+      - postgres:postgres
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'admin@example.com'
+      PGADMIN_DEFAULT_PASSWORD: 'admin'
